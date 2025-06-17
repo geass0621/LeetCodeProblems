@@ -38,9 +38,15 @@
  * @return {number[]}
  */
 var plusOne = function (digits) {
-  let stringNum = digits.join('');
-  let num = BigInt(stringNum) + 1n;
-  return Array.from(String(num), Number);
+  for (let i = digits.length - 1; i >= 0; i--) {
+    if (digits[i] < 9) {
+      digits[i]++;
+      return digits;
+    }
+    digits[i] = 0;
+  }
+  digits.unshift(1);
+  return digits;
 
 };
 
