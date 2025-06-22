@@ -36,5 +36,26 @@
  * @return {number}
  */
 var firstUniqChar = function (s) {
+  let map = new Map()
+
+  for (let i = 0; i < s.length; i++) {
+    if (!map.has(s[i])) {
+      map.set(s[i], 1);
+    } else {
+      let count = map.get(s[i]);
+      count = count + 1;
+      map.set(s[i], count);
+    }
+  }
+
+  for (let j = 0; j < s.length; j++) {
+    if (map.has(s[j]) && map.get(s[j]) === 1) {
+      return j
+    }
+  }
+
+  return -1;
 
 };
+
+console.log(firstUniqChar("aabb"));
