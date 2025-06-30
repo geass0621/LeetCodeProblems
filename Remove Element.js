@@ -57,6 +57,21 @@ var removeElement = function (nums, val) {
   return k;
 };
 
+// Alternative two-pointer solution (swap with end):
+var removeElementInPlace = function (nums, val) {
+  let i = 0;
+  let n = nums.length;
+  while (i < n) {
+    if (nums[i] === val) {
+      nums[i] = nums[n - 1];
+      n--;
+    } else {
+      i++;
+    }
+  }
+  return n;
+};
+
 let nums = [3, 2, 2, 3];
 let val = 3;
 console.log(removeElement(nums, val));

@@ -44,3 +44,16 @@ var reverseList = function (head) {
   head.next = null;
   return newHead;
 };
+
+// Iterative solution for reversing a linked list
+var reverseListIterative = function (head) {
+  let prev = null;
+  let curr = head;
+  while (curr) {
+    let nextTemp = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = nextTemp;
+  }
+  return prev;
+};

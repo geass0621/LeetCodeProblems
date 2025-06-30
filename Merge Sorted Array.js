@@ -85,3 +85,32 @@ var merge = function (nums1, m, nums2, n) {
 // Tests
 
 console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3)); // [1,2,2,3,5,6]
+
+// Optimal in-place O(1) space solution
+debugger;
+var mergeInPlace = function (nums1, m, nums2, n) {
+  let i = m - 1;
+  let j = n - 1;
+  let k = m + n - 1;
+  while (i >= 0 && j >= 0) {
+    if (nums1[i] > nums2[j]) {
+      nums1[k] = nums1[i];
+      i--;
+    } else {
+      nums1[k] = nums2[j];
+      j--;
+    }
+    k--;
+  }
+  while (j >= 0) {
+    nums1[k] = nums2[j];
+    j--;
+    k--;
+  }
+  // No need to copy nums1's leftovers; they're already in place
+};
+
+// Example usage:
+// let nums1 = [1,2,3,0,0,0];
+// mergeInPlace(nums1, 3, [2,5,6], 3);
+// console.log(nums1); // [1,2,2,3,5,6]
